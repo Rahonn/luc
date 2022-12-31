@@ -1,0 +1,8 @@
+build/
+dist/
+*/__pycache__
+*/*/__pycache__
+main.spec
+output.*
+.DS_Store
+.dccache

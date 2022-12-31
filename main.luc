@@ -1,0 +1,23 @@
+PRINT Hi there
+PRINT vars are next
+PRINT the age is
+SET age = 15
+PRINTVAR age
+PRINT the version is 
+PRINTVAR VERSION
+
+PRINT enter you name
+INPUT name
+#SET name = David
+PRINT  
+PRINT Hi
+PRINTVAR name
+
+PRINT enter your age
+#INPUT age
+
+MATH NEW_AGE / age 2
+MATH temp ** 3 2
+
+PRINTVAR NEW_AGE
+PRINTVAR temp

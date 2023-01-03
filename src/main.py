@@ -6,6 +6,7 @@ import commands
 import varmanager
 import langs.rust
 import langs.python
+import langs.c
 from codes.errorout import ErrorOut
 
 
@@ -66,6 +67,10 @@ def modeC():
     if lang.lower() == "python":
 
         langs.python.toPython(commandsList)
+        
+    if lang.lower() == "c":
+        
+        langs.c.toC(commandsList)
         
 
             

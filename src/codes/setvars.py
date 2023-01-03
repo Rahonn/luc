@@ -6,6 +6,7 @@ class SetVars(Command):
     text = None
     name = None
     value = ""
+    new = None
     
     def __init__(self, line):
         super().__init__(line)
@@ -39,6 +40,22 @@ class SetVars(Command):
 
                     self.value = f"{self.value}{parts[partIndex]} "
         
+        try:
+            
+            if varmanager.vars[self.name] == None:
+
+                self.new = True
+            
+            else:
+                
+                self.new = False
+                
+        except:
+            
+            self.new = True
+            
+            
+        
         varmanager.vars[self.name] = str(self.value)
         
         if not gettingData:
@@ -56,6 +73,7 @@ class SetVars(Command):
             
             "text": self.text,
             "name": self.name,
-            "value": self.value
+            "value": self.value,
+            "new": self.new
             
         }

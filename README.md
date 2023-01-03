@@ -11,4 +11,6 @@ To complie
 `./luc -c main.luc rust`
 or
 `./luc -c main.luc python`
+or
+`./luc -c main.luc c`
 

@@ -4,8 +4,6 @@ from colorama import Fore
 import re
 
 from codes.printer import Printer
-from codes.comment import Comment, COMMENT_CHAR
-from codes.errorout import ErrorOut
 from codes.setvars import SetVars
 from codes.printvar import PrintVar
 from codes.inputtovar import Input

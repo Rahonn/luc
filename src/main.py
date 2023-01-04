@@ -13,9 +13,10 @@ from codes.errorout import ErrorOut
 
 mode = sys.argv[1]
 
-commandsList = []
 
 def modeI():
+    
+    commandsList = []
     
     with open(sys.argv[2], "r") as f:
 
@@ -38,7 +39,10 @@ def modeI():
             sys.exit(0)
             
             
+            
 def modeC(lin):
+    
+    commandsList = []
     
     lang = lin
 
@@ -84,7 +88,7 @@ def modeD():
     
     print(f"{Fore.BLUE}Running code...{Fore.GREEN}\n")
     modeI()
-    commandsList = []
+    varmanager.vars = varmanager.defaultvars
     print(f"{Fore.BLUE}")
     isgood = input("Is this ok? (y or n): ")
     if isgood == "y":

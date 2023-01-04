@@ -84,6 +84,7 @@ def modeD():
     
     print(f"{Fore.BLUE}Running code...{Fore.GREEN}\n")
     modeI()
+    commandsList = []
     print(f"{Fore.BLUE}")
     isgood = input("Is this ok? (y or n): ")
     if isgood == "y":

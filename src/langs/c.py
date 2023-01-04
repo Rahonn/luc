@@ -80,7 +80,7 @@ def toC(commandsList):
             
             if not re.search(r"[0-9]", num2):
 
-                num1 = f"strtod({num1}, &eptr)"
+                num2 = f"strtod({num2}, &eptr)"
                 
             if varmanager.vars.get(cc.get_data()["varname"]) is None:
                 

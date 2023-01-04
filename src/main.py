@@ -7,6 +7,7 @@ import varmanager
 import langs.rust
 import langs.python
 import langs.c
+import langs.cpp
 from codes.errorout import ErrorOut
 
 
@@ -71,6 +72,10 @@ def modeC():
     if lang.lower() == "c":
         
         langs.c.toC(commandsList)
+        
+    if lang.lower() == "c++":
+
+        langs.cpp.toCPP(commandsList)
         
 
             

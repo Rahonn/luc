@@ -13,4 +13,6 @@ or
 `./luc -c main.luc python`
 or
 `./luc -c main.luc c`
+or
+`./luc -c main.luc c++`
 

@@ -28,6 +28,6 @@ SET age = 64
 
 SET msg = Comeline did not run
 
-!msg = "Comeline did run"
+#!msg = "Comeline did run"
 
 PRINTVAR msg

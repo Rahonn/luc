@@ -7,6 +7,7 @@ from codes.setvars import SetVars
 from codes.printvar import PrintVar
 from codes.inputtovar import Input
 from codes.mathcmd import MathCmd
+from codes.compline import CompLine, CODELINE_CHAR
 
 def getCommand(line):
     
@@ -34,6 +35,10 @@ def getCommand(line):
     if re.search(r"^MATH", line, re.MULTILINE):
         
         return MathCmd(line)
+    
+    if re.search(f"^{CODELINE_CHAR}", line, re.MULTILINE) or line.strip() == "":
+
+        return CompLine(line)
     
         
     return ErrorOut(line)

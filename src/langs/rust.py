@@ -8,6 +8,7 @@ from codes.setvars import SetVars
 from codes.printvar import PrintVar
 from codes.inputtovar import Input
 from codes.mathcmd import MathCmd
+from codes.compline import CompLine
 import varmanager
 
 def toRust(commandsList):
@@ -74,7 +75,11 @@ def toRust(commandsList):
             else:
 
                 output += f'let mut {cc.get_data()["varname"]} = {num1}.parse::<f64>().unwrap() as f64 {cc.get_data()["op"]} {num2}.parse::<f64>().unwrap() as f64;\n'
-            
+                
+        if type(cc) == CompLine:
+
+            output += f'{cc.get_data()["code"]}\n'
+
             
             
             

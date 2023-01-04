@@ -25,3 +25,9 @@ PRINTVAR temp
 SET age = 64
 
 #MATH age ** age 2
+
+SET msg = Comeline did not run
+
+!msg = "Comeline did run"
+
+PRINTVAR msg

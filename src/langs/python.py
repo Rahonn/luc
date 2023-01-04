@@ -8,6 +8,7 @@ from codes.setvars import SetVars
 from codes.printvar import PrintVar
 from codes.inputtovar import Input
 from codes.mathcmd import MathCmd
+from codes.compline import CompLine
 import varmanager
 
 def toPython(commandsList):
@@ -44,6 +45,10 @@ def toPython(commandsList):
             data = cc.get_data()
             
             output += f'{data["varname"]} = float({data["val1"]}) {data["op"]} float({data["val2"]})\n'
+            
+        if type(cc) == CompLine:
+            
+            output += f'{cc.get_data()["code"]}\n';
             
     with open("output.py", "w") as f:
         

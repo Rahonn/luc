@@ -8,6 +8,7 @@ from codes.setvars import SetVars
 from codes.printvar import PrintVar
 from codes.inputtovar import Input
 from codes.mathcmd import MathCmd
+from codes.compline import CompLine
 import varmanager
 
 
@@ -97,6 +98,10 @@ def toC(commandsList):
                 
                 print(f"{Fore.RED}\nError!!!{Fore.WHITE}\n")
                 sys.exit(0)
+                
+        if type(cc) == CompLine:
+
+            output += f'{cc.get_data()["code"]}\n'
 
     output = f"{output}return 0;\n}}"
 

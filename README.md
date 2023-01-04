@@ -16,3 +16,6 @@ or
 or
 `./luc -c main.luc c++`
 
+To debug
+
+`./luc -d main.luc`

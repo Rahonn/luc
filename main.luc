@@ -22,7 +22,7 @@ MATH temp ** 3 2
 PRINTVAR NEW_AGE
 PRINTVAR temp
 
-SET age = 64
+#SET age = 64
 
 #MATH age ** age 2
 
@@ -31,3 +31,11 @@ SET msg = Comeline did not run
 #!msg = "Comeline did run"
 
 PRINTVAR msg
+
+MATH randNum1t100 RAND 1 100
+MATH randNum1tage RAND 1 age
+MATH randNum RAND @ @
+
+PRINTVAR randNum
+PRINTVAR randNum1t100
+PRINTVAR randNum1tage

@@ -19,7 +19,7 @@ def toRust(commandsList):
 
         if type(i) == Input:
 
-            output = f'use std::io;\nfn main() {{\nlet mut VERSION: &str = "{varmanager.vars["VERSION"]}";\n'
+            output = f'use std::io;\nuse rand::Rng;\nfn main() {{\nlet mut VERSION: &str = "{varmanager.vars["VERSION"]}";\nlet mut rng = rand::thread_rng();\n'
             break
     
     for cc in commandsList:
@@ -71,6 +71,14 @@ def toRust(commandsList):
             if cc.get_data()["op"] == "**":
 
                 output += f'let mut {cc.get_data()["varname"]} = f64::powf({num1}.parse::<f64>().unwrap() as f64, {num2}.parse::<f64>().unwrap() as f64);\n'
+                
+            elif cc.get_data()["op"] == "RAND" and cc.get_data()["val1"] == "@" and cc.get_data()["val2"] == "@":
+                
+                output += f'let mut {cc.get_data()["varname"]} = rng.gen();\n'
+
+            elif cc.get_data()["op"] == "RAND" and not cc.get_data()["val1"] == "@" and not cc.get_data()["val2"] == "@":
+
+                output += f'let mut {cc.get_data()["varname"]} = rng.gen_range({num1}.parse::<f64>().unwrap() as f64..{num2}.parse::<f64>().unwrap() as f64);\n'
 
             else:
 

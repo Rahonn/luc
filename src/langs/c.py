@@ -20,7 +20,7 @@ def toC(commandsList):
 
         if type(i) == MathCmd:
 
-            output = f'#include <stdio.h>\n#include <math.h>\n#include <string.h>\n#include <stdlib.h>\nint main() {{\nconst char VERSION[] = "{varmanager.vars["VERSION"]}";\nchar *eptr;\n'
+            output = f'#include <stdio.h>\n#include <math.h>\n#include <string.h>\n#include <stdlib.h>\n#include <time.h>\nint main() {{\nconst char VERSION[] = "{varmanager.vars["VERSION"]}";\nchar *eptr;\nsrand(time(0));\n'
             break
 
     for cc in commandsList:
@@ -89,6 +89,14 @@ def toC(commandsList):
                 if cc.get_data()["op"] == "**":
 
                     output += f'char {cc.get_data()["varname"]}[25];\nsnprintf({cc.get_data()["varname"]}, 25, \"%lf\", pow({num1}, {num2}));\n'
+                    
+                elif cc.get_data()["op"] == "RAND" and cc.get_data()["val1"] == "@" and cc.get_data()["val2"] == "@":
+
+                    output += f'char {cc.get_data()["varname"]}[25];\nsnprintf({cc.get_data()["varname"]}, 25, \"%d\", rand());\n'
+
+                elif cc.get_data()["op"] == "RAND" and not cc.get_data()["val1"] == "@" and not cc.get_data()["val2"] == "@":
+
+                    output += f'char {cc.get_data()["varname"]}[25];\nsnprintf({cc.get_data()["varname"]}, 25, \"%d\", ((int) rand() % (int) {num2}) + (int) {num1});\n'
 
                 else:
 

@@ -15,6 +15,13 @@ def toPython(commandsList):
     
     output = f'VERSION = "{varmanager.vars["VERSION"]}"\n'
     
+    for i in commandsList:
+
+        if type(i) == MathCmd:
+
+            output = f'import random\nVERSION = "{varmanager.vars["VERSION"]}"\n'
+            break
+    
     for cc in commandsList:
         
         if type(cc) == Printer:
@@ -44,7 +51,17 @@ def toPython(commandsList):
             
             data = cc.get_data()
             
-            output += f'{data["varname"]} = float({data["val1"]}) {data["op"]} float({data["val2"]})\n'
+            if data["val1"] == "@" and data["val2"] == "@" and data["op"] == "RAND":
+                
+                output += f'{data["varname"]} = random.random()\n'
+                
+            elif not data["val1"] == "@" and not data["val2"] == "@" and data["op"] == "RAND":
+                
+                output += f'{data["varname"]} = random.randint(int({data["val1"]}), int({data["val2"]}))\n'
+            
+            else:
+                
+                output += f'{data["varname"]} = float({data["val1"]}) {data["op"]} float({data["val2"]})\n'
             
         if type(cc) == CompLine:
             

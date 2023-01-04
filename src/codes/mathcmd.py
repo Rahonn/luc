@@ -2,6 +2,7 @@ from codes.basecode import Command
 import varmanager
 
 import re
+import random
 
 class MathCmd(Command):
     
@@ -28,16 +29,19 @@ class MathCmd(Command):
             num1 = self.val1
             num2 = self.val2
 
-            if re.search(r"[^0-9]", self.val1):
+            if re.search(r"[^0-9]", self.val1) and not num1 == "@":
 
                 num1 = float(varmanager.vars[self.val1])
 
-            if re.search(r"[^0-9]", self.val2):
+            if re.search(r"[^0-9]", self.val2) and not num2 == "@":
 
                 num2 = float(varmanager.vars[self.val2])
 
-            num1 = float(num1)
-            num2 = float(num2)
+            if not num2 == "@" and not num1 == "@":
+                
+                num1 = float(num1)
+                num2 = float(num2)
+                
 
             if self.op == "+":
 
@@ -63,9 +67,24 @@ class MathCmd(Command):
 
                 varmanager.vars[self.varname] = num1 ** num2
 
-            else:
+            elif self.op == "RAND":
+                
+                
+                if num1 == "@" and num2 == "@":
+                
+                    varmanager.vars[self.varname] = random.random()
+                    
+                elif not num1 == "@" and not num2 == "@":
+                    
+                    varmanager.vars[self.varname] = random.randint(int(num1), int(num2))
+                    
+                else:
+                    
+                    return False
 
+            else:
                 return False
+            
 
             return True
 

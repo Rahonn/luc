@@ -20,7 +20,7 @@ def toCPP(commandsList):
 
         if type(i) == MathCmd:
 
-            output = f'#include <iostream>\n#include <cmath>\n#include <string>\nint main() {{\nconst std::string VERSION = "{varmanager.vars["VERSION"]}";\n'
+            output = f'#include <iostream>\n#include <cmath>\n#include <string>\nint main() {{\nconst std::string VERSION = "{varmanager.vars["VERSION"]}";\nsrand(time(NULL));\n'
             break
 
     for cc in commandsList:
@@ -89,6 +89,14 @@ def toCPP(commandsList):
                 if cc.get_data()["op"] == "**":
 
                     output += f'std::string {cc.get_data()["varname"]} = std::to_string(pow({num1}, {num2}));\n'
+                    
+                elif cc.get_data()["op"] == "RAND" and cc.get_data()["val1"] == "@" and cc.get_data()["val2"] == "@":
+                    
+                    output += f'std::string {cc.get_data()["varname"]} = std::to_string(rand());\n'
+                    
+                elif cc.get_data()["op"] == "RAND" and not cc.get_data()["val1"] == "@" and not cc.get_data()["val2"] == "@":
+
+                    output += f'std::string {cc.get_data()["varname"]} = std::to_string((int) rand() % (int) {num2} + (int) {num1});\n'
 
                 else:
 

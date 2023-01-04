@@ -4,7 +4,6 @@ from colorama import Fore
 
 import commands
 import varmanager
-import langs.rust
 import langs.python
 import langs.c
 import langs.cpp
@@ -65,23 +64,35 @@ def modeC(lin):
             print("| Error on this line\n")
             sys.exit(0)
 
-    if lang.lower() == "rust":
-        
-        langs.rust.toRust(commandsList)
-        
+    
+    didComp = False
+    
     if lang.lower() == "python":
+
+        didComp = True
 
         langs.python.toPython(commandsList)
         
     if lang.lower() == "c":
         
+        didComp = True
+        
         langs.c.toC(commandsList)
         
     if lang.lower() == "c++":
+        
+        didComp = True
 
         langs.cpp.toCPP(commandsList)
         
-    print(f"{Fore.BLUE}Compiled!{Fore.RESET}")
+    if didComp:
+        
+        print(f"{Fore.BLUE}Compiled!{Fore.RESET}")
+        
+    else:
+        
+        print(f"{Fore.RED}Unknowen Error!")
+        
         
 
 def modeD():
@@ -99,7 +110,6 @@ def modeD():
             
             print(f"\t{Fore.CYAN}LANGS")
             print("Type python for Python")
-            print("Type rust for Rust")
             print("Type c for C")
             print(f"Type c++ for C++{Fore.BLUE}")
             

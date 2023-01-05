@@ -26,6 +26,8 @@ PRINTVAR temp
 
 #MATH age ** age 2
 
+DELAY 5
+
 SET msg = Comeline did not run
 
 #!msg = "Comeline did run"

@@ -8,6 +8,7 @@ from codes.printvar import PrintVar
 from codes.inputtovar import Input
 from codes.mathcmd import MathCmd
 from codes.compline import CompLine, CODELINE_CHAR
+from codes.delaycmd import Delay
 
 def getCommand(line):
     
@@ -39,6 +40,10 @@ def getCommand(line):
     if re.search(f"^{CODELINE_CHAR}", line, re.MULTILINE) or line.strip() == "":
 
         return CompLine(line)
+    
+    if re.search(r"^DELAY", line, re.MULTILINE):
+
+        return Delay(line)
     
         
     return ErrorOut(line)

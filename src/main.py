@@ -10,8 +10,6 @@ import langs.cpp
 from codes.errorout import ErrorOut
 
 
-mode = sys.argv[1]
-
 
 def modeI():
     
@@ -126,7 +124,35 @@ def modeD():
         print(f"Goodbye!{Fore.RESET}")
         
     
+def modeH():
+    
+    print(f"\t{Fore.CYAN}Code Help{Fore.RESET}")
+    print(f"{Fore.BLUE}Print\t-\tTo print something out\t-\tPRINT [string]")
+    print("Print Var\t-\tTo print a var out\t-\tPRINTVAR [varname]")
+    print("Set\t-\tTo set a var\t-\tSET [varname] = [value]")
+    print("Input\t-\tTo get user input\t-\tINPUT [varname]")
+    print("Math\t-\tOperators +, -, *, /, **, RAND and store the result to a new var. If you are using RAND you can make num1 and num2 @ for no set range\t-\tMATH [varname] [operator] [num1] [num2]")
+    print("Delay\t-\tAdd a delay to your code\t-\tDELAY [seconds]")
+    print("Comments\t-\tUse # for comments\t-\t# [comment]")
+    print("Compline\t-\tDoes not run in interpretation but gets added to main function in compilation\t-\t![line]")
+    print()
+    print(f"\t{Fore.RED}Comands Options{Fore.RESET}")
+    print(f"{Fore.MAGENTA}Interpret\t-\tTo run code\t-\t./LUC -i [filename]")
+    print("Compile\t-\tTo compile to output src. You can compile to c, c++ and python\t-\t./LUC -c [filename] [lang]")
+    print("Debug\t-\tInterprets and Compiles your code\t-\t./LUC -d [filename]")
+    print("Help\t-\tTo get this info\t-\t./LUC --help")
+    print(f"Version\t-\tTo get the LUC version number\t-\t./LUC --version{Fore.RESET}")
 
+def modeV():
+    
+    print(f'{Fore.LIGHTGREEN_EX}LUC version: {varmanager.vars["VERSION"]}{Fore.RESET}')
+
+if len(sys.argv) <= 1:
+    
+    modeH()
+    sys.exit(0)
+
+mode = sys.argv[1]
             
 if mode.lower() == "-i":
     
@@ -139,3 +165,11 @@ if mode.lower() == "-c":
 if mode.lower() == "-d":
     
     modeD()
+
+if mode.lower() == "--help" or mode.lower() == "-help" or mode.lower() == "-h":
+    
+    modeH()
+    
+if mode.lower() == "--version" or mode.lower() == "-version" or mode.lower() == "-v":
+
+    modeV()

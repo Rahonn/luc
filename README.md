@@ -19,3 +19,7 @@ or
 To debug
 
 `./luc -d main.luc`
+
+To get help
+
+`./luc --help`

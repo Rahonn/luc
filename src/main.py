@@ -140,12 +140,40 @@ def modeH():
     print(f"{Fore.MAGENTA}Interpret\t-\tTo run code\t-\t./LUC -i [filename]")
     print("Compile\t-\tTo compile to output src. You can compile to c, c++ and python\t-\t./LUC -c [filename] [lang]")
     print("Debug\t-\tInterprets and Compiles your code\t-\t./LUC -d [filename]")
+    print("Playground\t-\tEnter the code playground\t-\t./LUC -p")
     print("Help\t-\tTo get this info\t-\t./LUC --help")
     print(f"Version\t-\tTo get the LUC version number\t-\t./LUC --version{Fore.RESET}")
 
 def modeV():
     
     print(f'{Fore.LIGHTGREEN_EX}LUC version: {varmanager.vars["VERSION"]}{Fore.RESET}')
+    
+def modeP():
+    
+    print(f"{Fore.LIGHTCYAN_EX}Starting playground...")
+    print(f"{Fore.LIGHTBLUE_EX}At any time type $exit to quit")
+    
+    print(f"{Fore.MAGENTA}Welcome to the playground!")
+    print()
+    
+    while True:
+        
+        line = input(f"{Fore.GREEN}>>> ")
+        
+        if line == "$exit":
+            
+            print(f"{Fore.MAGENTA}Goodbye!")
+            sys.exit(0)
+            
+        
+        cmd = commands.getCommand(line)
+        
+        print(Fore.MAGENTA, end="")
+        if not cmd.run():
+            
+            print(f"{Fore.RED}Thats a error!")
+            
+        
 
 if len(sys.argv) <= 1:
     
@@ -173,3 +201,7 @@ if mode.lower() == "--help" or mode.lower() == "-help" or mode.lower() == "-h":
 if mode.lower() == "--version" or mode.lower() == "-version" or mode.lower() == "-v":
 
     modeV()
+    
+if mode.lower() == "-p":
+    
+    modeP()

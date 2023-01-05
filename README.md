@@ -23,3 +23,7 @@ To debug
 To get help
 
 `./luc --help`
+
+To enter the playground
+
+`./luc -p`

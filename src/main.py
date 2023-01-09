@@ -181,6 +181,7 @@ def modeP():
 
 if len(sys.argv) <= 1:
     
+    print(f'{Fore.LIGHTGREEN_EX}Welcome to LUC (Language universal code)!{Fore.RESET}')
     modeH()
     sys.exit(0)
 

@@ -10,6 +10,7 @@ from codes.inputtovar import Input
 from codes.mathcmd import MathCmd
 from codes.compline import CompLine
 from codes.delaycmd import Delay
+from codes.ifcmd import IfCmd
 import varmanager
 
 
@@ -26,6 +27,14 @@ def toCPP(commandsList):
         if type(i) == MathCmd:
 
             output += f'#include <cmath>\n#include <string>\n'
+            mathcmdU = True
+            break
+        
+    for i in commandsList:
+
+        if type(i) == IfCmd:
+
+            output += f'#include <string>\n'
             mathcmdU = True
             break
         
@@ -77,7 +86,7 @@ def toCPP(commandsList):
                 output += f'std::string {cc.get_data()["varname"]};\n'
                 output += f'std::getline(std::cin, {cc.get_data()["varname"]});\n'
                 
-                varmanager.vars[cc.get_data()["varname"]] = True
+                varmanager.vars[cc.get_data()["varname"]] = "1"
                 
             else:
                 
@@ -137,6 +146,108 @@ def toCPP(commandsList):
         if type(cc) == CompLine:
 
             output += f'{cc.get_data()["code"]}\n'
+            
+        if type(cc) == IfCmd:
+
+            data = cc.get_data()
+
+            if not cc.run():
+
+                print(f"{Fore.RED}\nError!!!{Fore.WHITE}\n")
+                sys.exit(0)
+
+            newdata = cc.get_data()
+            
+            trueArg1STR = False
+
+            if not re.search(r"^[0-9]+$|^[0-9]+\.[0-9]+", str(newdata["arg1isStr"])):
+
+                trueArg1STR = True
+
+            trueArg2STR = False
+
+            if not re.search(r"^[0-9]+$|^[0-9]+\.[0-9]+", str(newdata["arg2isStr"])):
+
+                trueArg2STR = True
+                
+            if not (data["op"] == "==" and ((data["arg1isVar"] and trueArg1STR) or data["arg1isStr"]) and ((data["arg2isVar"] and trueArg2STR) or data["arg2isStr"])):
+
+                output += f'std::string {data["varname"]};\nif ('
+
+                if data["arg1isVar"]:
+
+                    if not newdata["arg1isNum"]:
+
+                        output += f'{data["arg1"][1::]}'
+                        
+                    else:
+
+                        output += f'std::stod({data["arg1"][1::]})'
+
+                if data["arg1isStr"]:
+
+                    output += f'"{data["arg1"][1::][:-1]}"'
+
+                if data["arg1isNum"]:
+
+                    output += f'{data["arg1"]}'
+
+                output += f' {data["op"]} '
+
+                if data["arg2isVar"]:
+
+                    if not newdata["arg2isNum"]:
+
+                        output += f'{data["arg2"][1::]}'
+
+                    else:
+
+                        output += f'std::stod({data["arg2"][1::]})'
+
+                if data["arg2isStr"]:
+
+                    output += f'"{data["arg2"][1::][:-1]}"'
+
+                if data["arg2isNum"]:
+
+                    output += f'{data["arg2"]}'
+
+                output += ") {\n"
+                output += f'{data["varname"]} = "{data["iftrue"]}";\n}}\nelse\n{{\n{data["varname"]} = "{data["iffalse"]}";\n}}\n'
+                
+            else:
+                
+                output += f'std::string {data["varname"]};\nif ('
+                
+                if data["arg1isVar"]:
+
+                    output += f'{data["arg1"][1:]}'
+
+                if data["arg1isStr"]:
+
+                    output += f'"{data["arg1"][1:][:-1]}\\n"'
+
+                if data["arg1isNum"]:
+
+                    output += f'{data["arg1"]}'
+
+                output += " == "
+
+                if data["arg2isVar"]:
+
+                    output += f'{data["arg2"][1:]}'
+
+                if data["arg2isStr"]:
+
+                    output += f'"{data["arg2"][1:][:-1]}\\n"'
+
+                if data["arg2isNum"]:
+
+                    output += f'{data["arg2"]}'
+
+                output += ") {\n"
+                output += f'{data["varname"]} = "{data["iftrue"]}";\n}}\nelse\n{{\n{data["varname"]} = "{data["iffalse"]}";\n}}\n'
+                
 
     output = f"{output}return 0;\n}}"
 

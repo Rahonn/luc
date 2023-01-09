@@ -146,6 +146,7 @@ def modeH():
     print("Playground\t-\tEnter the code playground\t-\t./LUC -p")
     print("Help\t-\tTo get this info\t-\t./LUC --help")
     print(f"Version\t-\tTo get the LUC version number\t-\t./LUC --version{Fore.RESET}")
+    modeV()
 
 def modeV():
     

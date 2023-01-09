@@ -72,14 +72,17 @@ def toPython(commandsList):
             if data["val1"] == "@" and data["val2"] == "@" and data["op"] == "RAND":
                 
                 output += f'{data["varname"]} = random.random()\n'
+                varmanager.vars[cc.get_data()["varname"]] = True
                 
             elif not data["val1"] == "@" and not data["val2"] == "@" and data["op"] == "RAND":
                 
                 output += f'{data["varname"]} = random.randint(int({data["val1"]}), int({data["val2"]}))\n'
+                varmanager.vars[cc.get_data()["varname"]] = True
             
             else:
                 
                 output += f'{data["varname"]} = float({data["val1"]}) {data["op"]} float({data["val2"]})\n'
+                varmanager.vars[cc.get_data()["varname"]] = True
                 
                 
         if type(cc) == Delay:

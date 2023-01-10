@@ -12,6 +12,7 @@ from codes.delaycmd import Delay
 from codes.ifcmd import IfCmd
 from codes.runifcmd import RunIfCmd
 from codes.exitcmd import ExitCmd
+from codes.importcmd import ImportCmd
 
 
 def getCommand(line):
@@ -61,6 +62,10 @@ def getCommand(line):
     if re.search(r"^EXIT", line, re.MULTILINE):
         
         return ExitCmd(line)
+    
+    if re.search(r"^IMPORT", line, re.MULTILINE):
+        
+        return ImportCmd(line)
         
     
         

@@ -1,0 +1,4 @@
+IMPORT folder/file3
+
+SET msg = This is a var from a differnt file!
+MATH randnum RAND @ @

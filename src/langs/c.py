@@ -13,11 +13,27 @@ from codes.delaycmd import Delay
 from codes.ifcmd import IfCmd
 from codes.runifcmd import RunIfCmd
 from codes.exitcmd import ExitCmd
+from codes.importcmd import ImportCmd
 import varmanager
 import commands
 
 
 def toC(commandsList):
+    
+    for cc in commandsList:
+        
+        if type(cc) == ImportCmd:
+
+            try:
+
+                cc.loadFile()
+                cc.addToCommandList()
+
+            except:
+
+                print(f"{Fore.RED}\nError!!!{Fore.WHITE}\n")
+                sys.exit(0)
+        
     
     with open("output.c", "w") as f:
         
@@ -378,6 +394,9 @@ def toCText(commandsList):
         if type(cc) == ExitCmd:
             
             output += "return 0;"
+            
+                
+            
             
 
     return output

@@ -13,10 +13,25 @@ from codes.delaycmd import Delay
 from codes.ifcmd import IfCmd
 from codes.runifcmd import RunIfCmd
 from codes.exitcmd import ExitCmd
+from codes.importcmd import ImportCmd
 import varmanager
 import commands
 
 def toCPP(commandsList):
+    
+    for cc in commandsList:
+
+        if type(cc) == ImportCmd:
+
+            try:
+
+                cc.loadFile()
+                cc.addToCommandList()
+
+            except:
+
+                print(f"{Fore.RED}\nError!!!{Fore.WHITE}\n")
+                sys.exit(0)
     
     with open("output.cpp", "w") as f:
         

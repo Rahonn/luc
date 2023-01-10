@@ -26,7 +26,7 @@ PRINTVAR temp
 
 #MATH age ** age 2
 
-DELAY 5
+DELAY 0.5
 
 SET msg = Comeline did not run
 
@@ -45,3 +45,15 @@ PRINTVAR randNum1tage
 IF over50age $age > 50 :The age is over 50:The age is under 50:
 
 PRINTVAR over50age
+
+PRINT Do you want to exit? (y or n)
+INPUT doexit
+
+RUNIF $doexit == !y! |EXIT|PRINT Thanks for staying. Now here is a random number!|
+
+MATH anewrandnum RAND @ @
+
+PRINTVAR anewrandnum
+
+
+

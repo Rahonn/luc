@@ -12,6 +12,7 @@ from codes.compline import CompLine
 from codes.delaycmd import Delay
 from codes.ifcmd import IfCmd
 from codes.runifcmd import RunIfCmd
+from codes.exitcmd import ExitCmd
 import varmanager
 import commands
 
@@ -303,5 +304,9 @@ def toPythonText(commandsList):
                     output += f'{data["arg2"]}'
 
                 output += f':\n    {toPythonText([commands.getCommand(data["iftrue"])])}\nelse:\n    {toPythonText([commands.getCommand(data["iffalse"])])}\n'
+                
+        if type(cc) == ExitCmd:
+
+            output += "quit()"
 
     return output 

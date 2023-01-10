@@ -14,8 +14,6 @@ from codes.errorout import ErrorOut
 
 def modeI():
     
-    commandsList = []
-    
     with open(sys.argv[2], "r") as f:
 
         fileData = f.read()
@@ -25,8 +23,6 @@ def modeI():
     for line in lines:
         
         cmd = commands.getCommand(line)
-        
-        commandsList.append(cmd)
         
         if not cmd.run():
             
@@ -40,7 +36,7 @@ def modeI():
             
 def modeC(lin):
     
-    commandsList = []
+    varmanager.commandsList = []
     
     lang = lin
 
@@ -54,7 +50,7 @@ def modeC(lin):
 
         cmd = commands.getCommand(line)
 
-        commandsList.append(cmd)
+        varmanager.commandsList.append(cmd)
         
         if type(cmd) == ErrorOut:
             print(f"{Fore.RED}\nError!!!{Fore.RESET}\n")
@@ -70,25 +66,25 @@ def modeC(lin):
 
         didComp = True
 
-        langs.python.toPython(commandsList)
+        langs.python.toPython(varmanager.commandsList)
         
     if lang.lower() == "c":
         
         didComp = True
         
-        langs.c.toC(commandsList)
+        langs.c.toC(varmanager.commandsList)
         
     if lang.lower() == "c++":
         
         didComp = True
 
-        langs.cpp.toCPP(commandsList)
+        langs.cpp.toCPP(varmanager.commandsList)
         
     if lang.lower() == "ruby":
         
         didComp = True
         
-        langs.ruby.toRuby(commandsList)
+        langs.ruby.toRuby(varmanager.commandsList)
         
         
     if didComp:

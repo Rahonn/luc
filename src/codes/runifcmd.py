@@ -4,6 +4,7 @@ import colorama
 from colorama import Fore
 
 from codes.basecode import Command
+from codes.exitcmd import ExitCmd
 import varmanager
 import commands
 
@@ -182,6 +183,7 @@ class RunIfCmd(Command):
         
     def run(self) -> bool:
         
+        
         try:
             
             self.iftestfinal()
@@ -191,7 +193,6 @@ class RunIfCmd(Command):
         except:
             
             return False
-            
         
         
         didIf = False
@@ -356,6 +357,11 @@ class RunIfCmd(Command):
                     
         except:
             
+            if (type(commands.getCommand(self.iftrue)) == ExitCmd or type(commands.getCommand(self.iffalse)) == ExitCmd):
+                
+                sys.exit(0)
+                return True
+
             return False
             
 

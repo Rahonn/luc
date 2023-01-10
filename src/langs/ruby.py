@@ -12,6 +12,7 @@ from codes.compline import CompLine
 from codes.delaycmd import Delay
 from codes.ifcmd import IfCmd
 from codes.runifcmd import RunIfCmd
+from codes.exitcmd import ExitCmd
 import varmanager
 import commands
 
@@ -283,5 +284,9 @@ def toRubyText(commandsList):
                     output += f'{data["arg2"]}'
 
                 output += f'\n    {toRubyText([commands.getCommand(data["iftrue"])])}\nelse\n    {toRubyText([commands.getCommand(data["iffalse"])])}\nend\n'
+                
+        if type(cc) == ExitCmd:
+
+            output += "exit"
 
     return output

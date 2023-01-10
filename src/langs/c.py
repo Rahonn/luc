@@ -12,6 +12,7 @@ from codes.compline import CompLine
 from codes.delaycmd import Delay
 from codes.ifcmd import IfCmd
 from codes.runifcmd import RunIfCmd
+from codes.exitcmd import ExitCmd
 import varmanager
 import commands
 
@@ -63,7 +64,7 @@ def toCFullText(commandsList):
         
         output += 'char *eptr;\nsrand(time(0));\n'
         
-    if ifcmdU:
+    if ifcmdU and not mathcmdU:
         
         output += 'char *eptr;\n'
         
@@ -373,5 +374,10 @@ def toCText(commandsList):
 
                 output += ") == 0) {\n"
                 output += f'{toCText([commands.getCommand(data["iftrue"])])}\n}}\nelse\n{{\n{toCText([commands.getCommand(data["iffalse"])])}\n}}\n'
+                
+        if type(cc) == ExitCmd:
+            
+            output += "return 0;"
+            
 
     return output

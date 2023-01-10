@@ -11,6 +11,8 @@ from codes.compline import CompLine, CODELINE_CHAR
 from codes.delaycmd import Delay
 from codes.ifcmd import IfCmd
 from codes.runifcmd import RunIfCmd
+from codes.exitcmd import ExitCmd
+
 
 def getCommand(line):
     
@@ -55,6 +57,11 @@ def getCommand(line):
     if re.search(r"^RUNIF", line, re.MULTILINE):
 
         return RunIfCmd(line)
+    
+    if re.search(r"^EXIT", line, re.MULTILINE):
+        
+        return ExitCmd(line)
+        
     
         
     return ErrorOut(line)

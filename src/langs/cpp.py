@@ -12,6 +12,7 @@ from codes.compline import CompLine
 from codes.delaycmd import Delay
 from codes.ifcmd import IfCmd
 from codes.runifcmd import RunIfCmd
+from codes.exitcmd import ExitCmd
 import varmanager
 import commands
 
@@ -368,5 +369,9 @@ def toCPPText(commandsList):
 
                 output += ") {\n"
                 output += f'{toCPPText([commands.getCommand(data["iftrue"])])}\n}}\nelse\n{{\n{toCPPText([commands.getCommand(data["iffalse"])])}\n}}\n'
+                
+        if type(cc) == ExitCmd:
+
+            output += "return 0;"
 
     return output

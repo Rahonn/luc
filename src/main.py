@@ -7,6 +7,7 @@ import varmanager
 import langs.python
 import langs.c
 import langs.cpp
+import langs.ruby
 from codes.errorout import ErrorOut
 
 
@@ -83,6 +84,13 @@ def modeC(lin):
 
         langs.cpp.toCPP(commandsList)
         
+    if lang.lower() == "ruby":
+        
+        didComp = True
+        
+        langs.ruby.toRuby(commandsList)
+        
+        
     if didComp:
         
         print(f"{Fore.BLUE}Compiled!{Fore.RESET}")
@@ -109,6 +117,7 @@ def modeD():
             print(f"\t{Fore.CYAN}LANGS")
             print("Type python for Python")
             print("Type c for C")
+            print("Type ruby for Ruby")
             print(f"Type c++ for C++{Fore.BLUE}")
             
             complang = input("Enter the lang to compile in: ")
@@ -141,7 +150,7 @@ def modeH():
     print()
     print(f"\t{Fore.RED}Comands Options{Fore.RESET}")
     print(f"{Fore.MAGENTA}Interpret\t-\tTo run code\t-\t./LUC -i [filename]")
-    print("Compile\t-\tTo compile to output src. You can compile to c, c++ and python\t-\t./LUC -c [filename] [lang]")
+    print("Compile\t-\tTo compile to output src. You can compile to c, c++, python and ruby\t-\t./LUC -c [filename] [lang]")
     print("Debug\t-\tInterprets and Compiles your code\t-\t./LUC -d [filename]")
     print("Playground\t-\tEnter the code playground\t-\t./LUC -p")
     print("Help\t-\tTo get this info\t-\t./LUC --help")

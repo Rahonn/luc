@@ -161,7 +161,7 @@ def modeV():
 def modeP():
     
     print(f"{Fore.LIGHTCYAN_EX}Starting playground...")
-    print(f"{Fore.LIGHTBLUE_EX}At any time type $exit to quit")
+    print(f"{Fore.LIGHTBLUE_EX}At any time type EXIT to quit")
     
     print(f"{Fore.MAGENTA}Welcome to the playground!")
     print()

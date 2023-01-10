@@ -8,7 +8,7 @@ To just run code
 
 To complie
 
-`./luc -c main.luc rust`
+`./luc -c main.luc ruby`
 or
 `./luc -c main.luc python`
 or

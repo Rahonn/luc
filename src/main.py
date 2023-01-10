@@ -168,7 +168,7 @@ def modeP():
     
     while True:
         
-        line = input(f"{Fore.GREEN}>>> ")
+        line = input(f"{Fore.GREEN}LUC >>> ")
         
         if line == "$exit":
             

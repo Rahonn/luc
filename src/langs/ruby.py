@@ -14,6 +14,7 @@ from codes.ifcmd import IfCmd
 from codes.runifcmd import RunIfCmd
 from codes.exitcmd import ExitCmd
 from codes.importcmd import ImportCmd
+from codes.passcmd import PassCmd
 import varmanager
 import commands
 
@@ -303,5 +304,9 @@ def toRubyText(commandsList):
         if type(cc) == ExitCmd:
 
             output += "exit"
+            
+        if type(cc) == PassCmd:
+
+            output += "nil"
 
     return output

@@ -14,6 +14,7 @@ from codes.ifcmd import IfCmd
 from codes.runifcmd import RunIfCmd
 from codes.exitcmd import ExitCmd
 from codes.importcmd import ImportCmd
+from codes.passcmd import PassCmd
 import varmanager
 import commands
 
@@ -395,8 +396,8 @@ def toCText(commandsList):
             
             output += "return 0;"
             
-                
+        if type(cc) == PassCmd:
             
+            output += "{};"
             
-
     return output

@@ -303,7 +303,7 @@ def toRubyText(commandsList):
                 
         if type(cc) == ExitCmd:
 
-            output += "exit"
+            output += "exit\n"
             
         if type(cc) == PassCmd:
 

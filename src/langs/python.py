@@ -323,7 +323,7 @@ def toPythonText(commandsList):
                 
         if type(cc) == ExitCmd:
 
-            output += "quit()"
+            output += "quit()\n"
 
         if type(cc) == PassCmd:
 

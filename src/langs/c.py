@@ -394,7 +394,7 @@ def toCText(commandsList):
                 
         if type(cc) == ExitCmd:
             
-            output += "return 0;"
+            output += "return 0;\n"
             
         if type(cc) == PassCmd:
             

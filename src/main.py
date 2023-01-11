@@ -149,6 +149,7 @@ def modeH():
     print(
         "Run If\t-\tAn if system. Replace args with the args use for string with this put a ! at the start and end and if you are using a var as a arg put a $ at the start of it's name, replace [outcmdiftrue] with the command to run if the if is true same for the [outcmdiffalse] but for false instead\t-\tRUNIF [arg1] [op] [arg2] |[outcmdiftrue]|[outcmdiffalse]|")
     print("Exit\t-\tExit the app\t-\tEXIT")
+    print("Import\t-\tUse the import command to load code from a different file. Replace [path] with the path to the luc file include the file extension\t-\tIMPORT [path]")
     print()
     print(f"\t{Fore.RED}Comands Options{Fore.RESET}")
     print(f"{Fore.MAGENTA}Interpret\t-\tTo run code\t-\t./LUC -i [filename]")

@@ -195,7 +195,7 @@ def toRubyText(commandsList):
 
                 if data["arg2isVar"]:
 
-                    output += f'str({data["arg2"][1:]})'
+                    output += f'{data["arg2"][1:]}.to_s'
 
                 if data["arg2isStr"]:
 
@@ -288,7 +288,7 @@ def toRubyText(commandsList):
 
                 if data["arg2isVar"]:
 
-                    output += f'str({data["arg2"][1:]})'
+                    output += f'{data["arg2"][1:]}.to_s'
 
                 if data["arg2isStr"]:
 

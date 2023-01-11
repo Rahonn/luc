@@ -392,6 +392,6 @@ def toCPPText(commandsList):
             
         if type(cc) == PassCmd:
 
-            output += "{};"
+            output += "{};\n"
 
     return output

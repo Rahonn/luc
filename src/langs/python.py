@@ -327,6 +327,6 @@ def toPythonText(commandsList):
 
         if type(cc) == PassCmd:
 
-            output += "pass"
+            output += "pass\n"
 
     return output 

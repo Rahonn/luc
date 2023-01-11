@@ -1,12 +1,12 @@
 vars = {
     
-    "VERSION": "8.0.0"
+    "VERSION": "8.0.1"
     
 }
 
 defaultvars = {
 
-    "VERSION": "8.0.0"
+    "VERSION": "8.0.1"
 
 }
 

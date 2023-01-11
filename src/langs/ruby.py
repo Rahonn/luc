@@ -307,6 +307,6 @@ def toRubyText(commandsList):
             
         if type(cc) == PassCmd:
 
-            output += "nil"
+            output += "nil\n"
 
     return output

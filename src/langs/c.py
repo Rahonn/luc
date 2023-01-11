@@ -398,6 +398,6 @@ def toCText(commandsList):
             
         if type(cc) == PassCmd:
             
-            output += "{};"
+            output += "{};\n"
             
     return output

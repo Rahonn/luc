@@ -56,4 +56,10 @@ MATH anewrandnum RAND @ @
 PRINTVAR anewrandnum
 
 
+IMPORT folder/file3.luc
+
+PASS
+
+PRINTVAR randnumf21t747
+
 

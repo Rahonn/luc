@@ -1,4 +1,4 @@
-IMPORT folder/file3
+IMPORT folder/file3.luc
 
 SET msg = This is a var from a differnt file!
 MATH randnum RAND @ @

@@ -6,7 +6,6 @@ import commands
 class ImportCmd(Command):
     
     path = None
-    truePath = None
     filedata = None
     lines = None
     commandList = None
@@ -14,11 +13,10 @@ class ImportCmd(Command):
     def __init__(self, line):
         super().__init__(line)
         self.path = line[7::]
-        self.truePath = f'{self.path}.luc'
         
     def loadFile(self):
         
-        with open(self.truePath, "r") as f:
+        with open(self.path, "r") as f:
             
             self.filedata = f.read()
             
@@ -65,7 +63,6 @@ class ImportCmd(Command):
         return {
             
             "path": self.path,
-            "truePath": self.truePath,
             "filedata": self.filedata
             
             

@@ -1,4 +1,4 @@
-IMPORT file2
+IMPORT file2.luc
 
 PRINTVAR msg
 PRINT Here is a random number:

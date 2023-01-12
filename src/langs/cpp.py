@@ -289,10 +289,18 @@ def toCPPText(commandsList):
 
             data = cc.get_data()
 
-            if not cc.run():
-
+    
+            try:
+                
+                cc.iftestfinal()
+                cc.iftest()
+                cc.iftestfinal()
+                
+            except:
+    
                 print(f"{Fore.RED}\nError!!!{Fore.WHITE}\n")
                 sys.exit(0)
+    
 
             newdata = cc.get_data()
 
